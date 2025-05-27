@@ -3,6 +3,7 @@ package com.first.statementlist
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
@@ -10,39 +11,11 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.first.statementlist.ui.theme.StatementListTheme
-
-val accountsList = listOf(
-    Account("Saving", 100.23, "KWD"),
-    Account("Salary", 20.23, "KWD"),
-    Account("Kids", 510.5, "KWD"),
-    Account("Family", 1000.024, "KWD"),
-    Account("Saving", 100.23, "KWD"),
-    Account("Salary", 20.23, "KWD"),
-    Account("Kids", 510.5, "KWD"),
-    Account("Family", 1000.024, "KWD"),
-    Account("Saving", 100.23, "KWD"),
-    Account("Salary", 20.23, "KWD"),
-    Account("Kids", 510.5, "KWD"),
-    Account("Family", 1000.024, "KWD"),
-    Account("Saving", 100.23, "KWD"),
-    Account("Salary", 20.23, "KWD"),
-    Account("Kids", 510.5, "KWD"),
-    Account("Family", 1000.024, "KWD")
-)
-
-val statementList = listOf(
-    AccountStatement("2025-03-20", "Credited", 1500.0, "Salary for March", 1800.0),
-    AccountStatement("2025-04-05", "Debited", 200.0, "Groceries", 1600.0),
-    AccountStatement("2025-04-10", "Debited", 153.0, "Electricity bill", 1447.0),
-    AccountStatement("2025-04-15", "Credited", 10.0, "Friends collection", 1457.0),
-    AccountStatement("2025-04-20", "Debited", 5.7, "Coffee shop", 1451.3),
-    AccountStatement("2025-04-20", "Credited", 1500.0, "Salary for April", 2951.0),
-    AccountStatement("2025-05-05", "Debited", 800.0, "Electronics", 2170.0),
-    AccountStatement("2025-05-10", "Debited", 155.0, "Electricity bill", 2015.0),
-    AccountStatement("2025-05-13", "Debited", 23.0, "Purchase of food", 1992.0),
-    AccountStatement("2025-05-14", "Debited", 7.7, "Purchase of food", 1084.3)
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
@@ -50,24 +23,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             StatementListTheme {
-                var showAccounts by remember { mutableStateOf(false) }
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = { Text("Bank App") },
-                            actions = {
-                                IconButton(onClick = { showAccounts = !showAccounts }) {
-                                    Icon(imageVector = if (showAccounts) Icons.Default.List else Icons.Default.AccountBox, contentDescription = null)
-                                }
-                            }
-                        )
-                    }
-                ) { innerPadding ->
-                    if (showAccounts) {
-                        AccountList(modifier = Modifier.padding(innerPadding))
-                    } else {
-                        StatementList(modifier = Modifier.padding(innerPadding))
-                    }
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    AccountsNavHost()
                 }
             }
         }

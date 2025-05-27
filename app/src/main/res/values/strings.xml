@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">StatementList</string>
     <string name="account_name">%1$s Account</string>
+    <string name="deposit">Deposit</string>
+    <string name="withdraw">Withdraw</string>
 </resources>
