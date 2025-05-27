@@ -1,4 +1,4 @@
-package com.first.statementlist
+package com.first.statementlist.account
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.first.statementlist.viewmodel.Account
 
 @Composable
 fun AccountCard(account: Account, onClick: () -> Unit) {

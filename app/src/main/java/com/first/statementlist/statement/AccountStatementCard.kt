@@ -1,4 +1,4 @@
-package com.first.statementlist
+package com.first.statementlist.statement
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.first.statementlist.viewmodel.AccountStatement
 
 @Composable
 fun AccountStatementCard(statement: AccountStatement) {

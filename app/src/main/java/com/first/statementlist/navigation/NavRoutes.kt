@@ -1,4 +1,4 @@
-package com.first.statementlist
+package com.first.statementlist.navigation
 
 enum class NavRoutes(val route: String) {
     ACCOUNTS_LIST("accountsList"),
